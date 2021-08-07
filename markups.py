@@ -6,7 +6,7 @@ main_menu.row('Мне нужен Чат-бот', 'Мне нужна другая
 
 # ---back menu ---
 back_menu = telebot.types.ReplyKeyboardMarkup(True)
-back_menu.row('⬅️')
+back_menu.row('⬅ назад')
 
 # --- Delete markup ---
 del_markup = telebot.types.ReplyKeyboardRemove()
