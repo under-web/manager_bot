@@ -5,6 +5,6 @@
 ## Зависимости
 
 Зависимости в в файле req.txt,можно установить с момощью pip:
-< pip install -r req.txt >
+`pip install -r req.txt `
  
 ## Запуск
