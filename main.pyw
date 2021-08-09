@@ -3,14 +3,30 @@ import time
 from config import token_api
 from intro_text import intro_text
 import markups as mark
+import sqlite3
 
 my_id = 1107191282
+
 
 def run_bot():
     bot = telebot.TeleBot(token_api)
 
     @bot.message_handler(commands=['start'])  # приветственная функция
     def send_welcome(message):
+
+        conn = sqlite3.connect('users_manager_bot.db')
+        cur = conn.cursor()
+        cur.execute("""CREATE TABLE IF NOT EXISTS users(
+           userid INT PRIMARY KEY,
+           fname TEXT,
+           lname TEXT);
+        """)
+        conn.commit()
+
+        user_info = (f'{message.chat.id}', f'{message.from_user.first_name}', f'{message.from_user.last_name}')
+        cur.execute("INSERT OR IGNORE INTO users VALUES(?, ?, ?);", user_info)
+        conn.commit()
+
         img = open('title.jpg', 'rb')
         bot.send_photo(message.chat.id, img)
         bot.send_message(message.chat.id, intro_text,
@@ -57,7 +73,6 @@ def run_bot():
         else:
             bot.send_message(message.chat.id, 'Я Вас не понял =(')
 
-
     while True:  # функция для пулинга
         print('=^.^=')
 
@@ -66,10 +81,10 @@ def run_bot():
             print('Этого не должно быть')
         except telebot.apihelper.ApiException:
             print('Проверьте связь и API')
-            time.sleep(1)
+            time.sleep(10)
         except Exception as e:
             print(e)
-            time.sleep(1)
+            time.sleep(60)
 
 
 if __name__ == '__main__':
