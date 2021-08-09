@@ -8,8 +8,16 @@ import sqlite3
 my_id = 1107191282
 
 
+def get_info_user(bot, message):  # функция для отправки информации о юзере в личку
+    bot.send_message(my_id, message.text + ' '
+                     + f'{message.chat.id}' + ' '
+                     + f'{message.from_user.first_name}' + ' '
+                     + f'{message.from_user.last_name}')
+
+
 def run_bot():
     bot = telebot.TeleBot(token_api)
+
 
     @bot.message_handler(commands=['start'])  # приветственная функция
     def send_welcome(message):
@@ -23,8 +31,11 @@ def run_bot():
         """)
         conn.commit()
 
-        user_info = (f'{message.chat.id}', f'{message.from_user.first_name}', f'{message.from_user.last_name}')
-        cur.execute("INSERT OR IGNORE INTO users VALUES(?, ?, ?);", user_info)
+        user_info = (f'{message.chat.id}',
+                     f'{message.from_user.first_name}',
+                     f'{message.from_user.last_name}')
+
+        cur.execute("INSERT OR IGNORE INTO users VALUES(?, ?, ?);", user_info)  # если есть такая запись не записывать
         conn.commit()
 
         img = open('title.jpg', 'rb')
@@ -41,10 +52,7 @@ def run_bot():
         elif '@' in message.text:
             bot.send_message(message.chat.id, 'Спасибо, с Вами свяжутся в ближайшее время!',
                              reply_markup=mark.del_markup)
-            bot.send_message(my_id, message.text + ' '
-                             + f'{message.chat.id}' + ' '
-                             + f'{message.from_user.first_name}' + ' '
-                             + f'{message.from_user.last_name}')
+            get_info_user(bot, message)
 
         elif message.text == 'Мне нужен Чат-бот':
             bot.send_message(message.chat.id, 'Хорошо! На сколько вопросов бот должен ответить?',
@@ -61,10 +69,8 @@ def run_bot():
             bot.send_message(message.chat.id, 'Благодарим за опрос, Ваша предварительная стоимость 1800 рублей.'
                                               '\nЦена может меняться в зависимости от сложности Бота',
                              reply_markup=mark.back_menu)
-            bot.send_message(my_id, message.text + ' '
-                             + f'{message.chat.id}' + ' '
-                             + f'{message.from_user.first_name}' + ' '
-                             + f'{message.from_user.last_name}')
+            get_info_user(bot, message)
+
         elif message.text == 'Назад':
             img = open('title.jpg', 'rb')
             bot.send_photo(message.chat.id, img)
