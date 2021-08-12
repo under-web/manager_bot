@@ -44,6 +44,7 @@ def run_bot():
                          reply_markup=mark.main_menu)
 
     @bot.message_handler(content_types=['text'])
+    # TODO: добавить таблицу в базу с описанием программы клиента
     def send_markup(message):
         if message.text == 'Мне нужна другая программа':
             bot.send_message(message.chat.id, 'Хорошо! Опишите своими словами '
