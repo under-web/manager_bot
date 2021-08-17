@@ -15,6 +15,6 @@ del_markup = telebot.types.ReplyKeyboardRemove()
 how_ques = telebot.types.ReplyKeyboardMarkup(True)
 how_ques.row('До 10 вопросов', 'От 10 до 20', 'Более 20')
 
-# --- add function ---
+# --- any function ---
 any_func = telebot.types.ReplyKeyboardMarkup(True)
 any_func.row('Будут доп. функции', 'Нет сложных функций')
