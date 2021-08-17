@@ -9,8 +9,9 @@ Python 3.X
 `pip install -r req.txt `
  
 ## Запуск
+1) В файле **config.py** прописываем токен бота (взять можно в BotFather)
 
-`python main.pyw`
+2) `python main.pyw`
 
 ## 
 
