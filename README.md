@@ -20,5 +20,5 @@ Python 3.X
 ## Запуск
 1) В файле **config.py** прописываем токен бота (взять можно в BotFather)
 
-2) `python main.pyw`
+2) `python main.py`
 
