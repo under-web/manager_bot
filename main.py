@@ -5,7 +5,7 @@ from intro_text import intro_text
 import markups as mark
 import sqlite3
 
-my_id = 1107191282
+my_id = "your ID in Telegram" # Ваш айди куда будет приходить сообщения с информацией о юзере и его заявке
 
 
 def get_info_user(bot, message):  # функция для отправки информации о юзере в личку
@@ -20,7 +20,7 @@ def run_bot():
 
     @bot.message_handler(commands=['start'])  # приветственная функция
     def send_welcome(message):
-
+        
         conn = sqlite3.connect('users_manager_bot.db')
         cur = conn.cursor()
         cur.execute("""CREATE TABLE IF NOT EXISTS users(
@@ -95,7 +95,7 @@ def run_bot():
             bot.send_message(message.chat.id, 'Я Вас не понял =(')
 
     while True:  # функция для пулинга
-        print('=^.^=')
+        print('=^.^=' ver 1.0) # информация о статусе бота в коммандной строке 
 
         try:
             bot.polling(none_stop=True, interval=3, timeout=20)
