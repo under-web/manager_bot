@@ -18,7 +18,7 @@ Python 3.X
 `pip install -r req.txt `
  
 ## Запуск
-1) В файле **config.py** прописываем токен бота (взять можно в BotFather)
+1) В файле **config.py** прописываем токен бота [(взять можно в BotFather)](https://telegram.me/BotFather)
 
 2) `python main.py`
 
