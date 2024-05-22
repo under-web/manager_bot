@@ -27,5 +27,5 @@ Python 3.X
 ## Запуск
 1) В файле **config.py** прописываем токен бота [(взять можно в BotFather)](https://telegram.me/BotFather)
 
-2) `python main.py`
+2) Запускаем `python main.py`
 
