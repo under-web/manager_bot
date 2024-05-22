@@ -13,14 +13,16 @@
 
 ## Зависимости
 Python 3.X
+
 Обязательно установите виртуальное окружение:
 
-`python -m venv venv` 
+1) `python -m venv venv` 
+
 Иначе могут быть проблемы если установлены другие версии или библиотеки от telethon, Telegrambotapi и пр.
 
 Зависимости в в файле req.txt,можно установить с момощью pip:
 
-`pip install -r req.txt `
+2) `pip install -r req.txt `
  
 ## Запуск
 1) В файле **config.py** прописываем токен бота [(взять можно в BotFather)](https://telegram.me/BotFather)
