@@ -57,5 +57,5 @@ Dependencies in the req.txt file can be installed using pip:
 
 2) Run `python main.py`
 
-For coffee for a developer =) - USDT Tron TRC-20: TZ4aZD7BsZfj69ASqBK6txkkUpKUjnWX9p
+☕For coffee for a developer =) - USDT Tron TRC-20: TZ4aZD7BsZfj69ASqBK6txkkUpKUjnWX9p
 
