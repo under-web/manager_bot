@@ -28,11 +28,11 @@ Python 3.X
 
 1) `python -m venv venv` 
 
-Иначе могут быть проблемы если установлены другие версии или библиотеки от telethon, Telegrambotapi и пр.
+Иначе могут быть проблемы, если установлены другие версии или библиотеки от telethon, Telegrambotapi и пр.
 
-Зависимости в в файле req.txt,можно установить с момощью pip:
+Зависимости в в файле requirements.txt,можно установить с момощью pip:
 
-2) `pip install -r req.txt `
+2) `pip install -r requirements.txt `
 
 ## Dependencies
 Python 3.X
