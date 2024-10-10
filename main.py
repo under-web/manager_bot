@@ -5,7 +5,7 @@ from intro_text import intro_text
 import markups as mark
 import sqlite3
 
-my_id = "your ID in Telegram" # Ваш айди куда будет приходить сообщения с информацией о юзере и его заявке
+my_id = "your ID in Telegram" # Ваш ID куда будут приходить сообщения с информацией о юзере и его заявке
 
 
 def get_info_user(bot, message):  # функция для отправки информации о юзере в личку
@@ -18,10 +18,10 @@ def get_info_user(bot, message):  # функция для отправки ин�
 def run_bot():
     bot = telebot.TeleBot(token_api)
 
-    @bot.message_handler(commands=['start'])  # приветственная функция
+    @bot.message_handler(commands=['start'])  # приветственная функция-обработчик /start
     def send_welcome(message):
         
-        conn = sqlite3.connect('users_manager_bot.db')
+        conn = sqlite3.connect('users_manager_bot.db') # подключаемся к БД
         cur = conn.cursor()
         cur.execute("""CREATE TABLE IF NOT EXISTS users(
            userid INT PRIMARY KEY,
@@ -39,12 +39,12 @@ def run_bot():
 
         img = open('title.jpg', 'rb')
         bot.send_photo(message.chat.id, img)
-        welcome_user = f'Здравствуйте {message.from_user.first_name} {message.from_user.last_name}' + intro_text
+        welcome_user = f'Здравствуйте {message.from_user.first_name} {message.from_user.last_name}' + intro_text   # прикрепляем картику и описание к приветствию
 
         bot.send_message(message.chat.id, welcome_user,
                          reply_markup=mark.main_menu)
 
-    @bot.message_handler(content_types=['text'])
+    @bot.message_handler(content_types=['text']) # обработчик текста от юзера 
     def send_markup(message):
         if message.text == 'Мне нужна другая программа':
             bot.send_message(message.chat.id, 'Хорошо! Опишите своими словами '
@@ -95,7 +95,7 @@ def run_bot():
             bot.send_message(message.chat.id, 'Я Вас не понял =(')
 
     while True:  # функция для пулинга
-        print('=^.^=' ver 1.0) # информация о статусе бота в коммандной строке 
+        print('=^.^=' ver 1.1a) # информация о статусе бота в коммандной строке 
 
         try:
             bot.polling(none_stop=True, interval=3, timeout=20)
